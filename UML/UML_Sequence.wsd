@@ -1,0 +1,146 @@
+@startrum1
+Client -> Server: Authentication Request
+Server --> Client:Authentication Response
+
+Client -> Server:Another Authentication Request
+Server --> Client:Another Authentication Response
+@endum1
+
+@startuml
+participant Participant as Foo
+actor   Actor   as Foo1
+boundary    Boundary    as Foo2
+control Control as Foo3
+entity  Entity  as Foo4
+database    Database as Foo5
+collections Collections as Foo6
+queue   Queue   as Foo7
+Foo -> Foo1 : To actor 
+Foo -> Foo2: To boundary  
+Foo -> Foo3: To control 
+Foo -> Foo4: To entity 
+Foo -> Foo5: To database
+Foo -> Fo06: To collections
+Foo -> Foo7: To queue
+@enduml
+
+@startuml
+actor Bob #red
+Единственная разница между actor
+и participant - это разная форма отображения participant Alice
+participant "У меня очень\пдлинное имя" as L #99FF99
+Alice->Bob: Authentication Request 
+Bob->Alice: Authentication Response
+Bob->L: Log transaction
+@enduml
+@startum1
+participant Last order 30
+participant Middle order 20
+participant First order 10
+@endum1
+
+@startum1
+Alice -> Alice:Это сигнал к самому себе.\nТакже это являетьсся демонстранцией текста
+@endum1
+
+@startuml
+autonumber 1.1.1
+Alice -> Bob: Authentication request
+Bob --> Alice: Response
+autonumber inc A
+'Now we have 2.1.1
+Alice -> Bob: Another authentication request Bob --> Alice: Response
+autonumber inc B
+'Now we have 2.2.1
+Alice -> Bob: Another authentication request Bob --> Alice: Response
+autonumber inc A
+'Now we have 3.1.1
+Alice -> Bob: Another authentication request
+autonumber inc B
+'Now we have 3.2.1
+Bob --> Alice: Response
+@endum1
+@startuml
+Alice -> Bob: Authentication Request
+alt successful case
+Bob -> Alice: Authentication Accepted
+else some kind of failure
+Bob -> Alice: Authentication Failure 
+group My own label
+Alice -> Log Log attack start loop 1000 times
+end
+Alice -> Bob: DNS Attack
+Alice -> Log Log attack end end
+else Another type of failure
+Bob -> Alice: Please repeat
+end
+@enduml
+@startuml
+Alice->Bob : привет
+note left: это первая заметка
+Bob->Alice : ага
+note right: это другая заметка
+Bob->Bob : я размышляю над этим note left
+заметки
+могут занимать
+несколько строчек
+end note
+@enduml
+@startuml
+participant Alice participant Bob
+note left of Alice #aqua Будет отображено
+слева от Алисы
+end note
+note right of Alice: Будет отображено справа от Алисы
+note over Alice: Будет отображено над Алисой.
+note over Alice, Bob #FFAAAA: Будет отображено\n над Алисой и Бобом.
+note over Bob, Alice
+А это еще
+один пример
+длинной заметки.
+end note
+@enduml
+@startuml
+Alice -> Bob : message 1 
+Alice -> Bob : message 2
+newpage
+Alice -> Bob: message 3
+Alice -> Bob : message 4
+newpage A title for the\nlast page
+Alice -> Bob : message 5
+Alice -> Bob : message 6
+@enduml
+@startuml
+== Initialization ==
+Alice -> Bob: Authentication Request Bob --> Alice: Authentication Response
+== Repetition ==
+Alice -> Bob: Another authentication Request Alice <-- Bob: another authentication Response
+@enduml
+@startum1
+Bob -> Alice: привет
+active Alice
+Alice -> Alice:какоето действие 
+return пока
+@endum1
+@startum1
+title __Simple__ communication example\non several lines
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+@endum1
+@startum1
+box "Internal Service" #LightBlue
+participant Bob
+participant Alice
+end box
+participant Other
+Bob-> Alice:hello
+Alice-> Other:hello
+@endum1
+@startum1
+Alice->Bob:Запрос авторизации
+alt #Gold #LightBlue Успешный кейс
+    Bob -> Alice: Запрос удовлетворен
+else #Pink Ошибка
+    Bob-> Alice: Запрос Отклонен
+end
+@endum1
